@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>انکم ٹیکس کیلکولیٹر - بجٹ 2025/26</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Noto Nastaliq Urdu', serif;
+      background-color: #f1f1f1;
+      text-align: center;
+      padding: 40px;
+    }
+    h1 {
+      color: #003366;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 18px;
+      margin: 10px;
+      width: 280px;
+      text-align: center;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 20px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    .invite {
+      margin-top: 25px;
+      font-size: 18px;
+      color: #990000;
+      background-color: #ffeaea;
+      border: 2px dashed #cc0000;
+      padding: 20px;
+      border-radius: 10px;
+      line-height: 1.8;
+    }
+    .footer {
+      margin-top: 40px;
+      font-size: 16px;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>💰 انکم ٹیکس کیلکولیٹر - بجٹ 2025/26</h1>
+
+  <input type="number" id="monthlySalary" placeholder="ماہانہ آمدن درج کریں (روپے میں)">
+  <br>
+  <button onclick="calculateTax()">ٹیکس معلوم کریں</button>
+
+  <div id="result"></div>
+
+  <div class="footer">
+    Designed by ZAFRAN SHAHZAD<br>
+    📧 alizafran078@gmail.com | 📱 0316-55-400-74<br>
+    Proud to be Kashmiri ❤️
+  </div>
+
+  <script>
+    function calculateTax() {
+      const monthly = parseFloat(document.getElementById("monthlySalary").value);
+      const annual = monthly * 12;
+      let taxRate = 0;
+
+      if (annual <= 600000) {
+        taxRate = 0.01;
+      } else if (annual <= 1200000) {
+        taxRate = 0.11;
+      } else if (annual <= 2200000) {
+        taxRate = 0.23;
+      } else if (annual <= 3200000) {
+        taxRate = 0.30;
+      } else if (annual <= 4100000) {
+        taxRate = 0.35;
+      } else {
+        taxRate = 0.35;
+      }
+
+      const taxAmount = Math.round(annual * taxRate);
+
+      document.getElementById("result").innerHTML = `
+        <strong>🗓️ ماہانہ آمدن:</strong> ${monthly.toLocaleString()} روپے<br>
+        <strong>📅 سالانہ آمدن:</strong> ${annual.toLocaleString()} روپے<br>
+        <strong>٪ ٹیکس کی شرح:</strong> ${(taxRate * 100).toFixed(0)}%<br>
+        <strong>💸 کٹنے والا ٹیکس:</strong> ${taxAmount.toLocaleString()} روپے<br><br>
+
+        <div class="invite">⚠️ <strong>توجہ دیں!</strong><br>
+        اگر آپ ابھی تک فائلر نہیں بنے، تو آج ہی قدم بڑھائیں۔<br>
+        فائلر بننے سے نہ صرف ٹیکس کی شرح کم ہوگی، بلکہ آپ کو گاڑی، زمین اور دیگر خریداری میں بے شمار فائدے بھی حاصل ہوں گے۔<br><br>
+        🟢 <strong>میں آپ کے لیے فری میں فائلر رجسٹریشن کروا سکتا ہوں۔</strong><br>
+        📱 <strong>رابطہ کریں:</strong> 0316-55-400-74 - زعفران شہزاد
+        </div>
+      `;
+    }
+  </script>
+
+</body>
+</html>
